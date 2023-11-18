@@ -7,4 +7,9 @@ public class MenuController : MonoBehaviour
         Debug.Log("exit");
         Application.Quit();
     }
+
+    public void RunLevel()
+    {
+        Debug.Log("Run Level");
+    }
 }
