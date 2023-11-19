@@ -7,21 +7,20 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
 {
     [Range(0f, 1f)] // ползунок от 0 до 1
     public float AlphaLevel = 1f; // минимальное значение альфа-канала, которое должна иметь часть текстуры, на которую наведен курсор, чтобы обрабатывать нажатия
-    private Image bt; // работать нужно именно с Image а не с Button
+    private Image btImage; // работать нужно именно с Image а не с Button
 
     [SerializeField] private GameObject buttonStroke;
+    [SerializeField] private Color hoverColor;
     private Image btStImage;
-    private Color hoverColor;
     private Color normalColor;
 
     private void Start()
     {
-        bt = gameObject.GetComponent<Image>();
-        bt.alphaHitTestMinimumThreshold = AlphaLevel; // параметр alphaHitTestMinimumThreshold как раз и отвечает за то, какой минимальный уровень прозрачности должен быть у части текстуры, чтобы она могла обработать нажатие.
+        btImage = gameObject.GetComponent<Image>();
+        btImage.alphaHitTestMinimumThreshold = AlphaLevel; // параметр alphaHitTestMinimumThreshold как раз и отвечает за то, какой минимальный уровень прозрачности должен быть у части текстуры, чтобы она могла обработать нажатие.
 
-        btStImage = buttonStroke.GetComponentInChildren<Image>();
+        btStImage = buttonStroke.GetComponent<Image>();
         normalColor = btStImage.color;
-        hoverColor = new Color(normalColor.r, normalColor.g + 0.7f, normalColor.b);
     }
 
 
