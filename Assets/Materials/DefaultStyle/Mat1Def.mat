@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: testPNG
+  m_Name: Mat1Def
   m_Shader: {fileID: 10721, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -44,9 +44,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 7f62c13c114c4414b9f73636dea34b1d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0ef95f8bc2564594182d7fc206e45276, type: 3}
         m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 31.41086, y: 0}
+        m_Offset: {x: 11.037793, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
