@@ -980,6 +980,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bc3d5ce0c0e8cb4b97ab0dac1026e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Canvas: {fileID: 397457903}
+  buttonPrefab: {fileID: 6990681944794066536, guid: f176afa57b1ca0547832cdb3a8a29581, type: 3}
+  runLevelPrefab: {fileID: 6990681944794066536, guid: 0195f1e5a9e57d743add39dc16b675e4, type: 3}
+  underMenuPrefab: {fileID: 1706495040879495114, guid: 981b2f0b8d9b13b488512afa2cbb41e3, type: 3}
 --- !u!4 &899755053
 Transform:
   m_ObjectHideFlags: 0
