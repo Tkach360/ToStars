@@ -225,4 +225,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AlphaLevel: 1
   buttonStroke: {fileID: 1926674322579941934}
+  buttonText: {fileID: 0}
   hoverColor: {r: 0, g: 0.6745098, b: 0.75294125, a: 1}
+  styleColor: {r: 0, g: 0.050980397, b: 0.8117648, a: 1}

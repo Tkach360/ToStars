@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.018369503, g: 0.03933449, b: 0.8113208, a: 1}
+  m_Color: {r: 0.019607844, g: 0.039215688, b: 0.8117648, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -151,8 +151,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4290817024
-  m_fontColor: {r: 0, g: 0.67316866, b: 0.754717, a: 1}
+    rgba: 4293381888
+  m_fontColor: {r: 0, g: 0.8113209, b: 0.9056604, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 3555407607293779489}
   m_Layer: 0
   m_Name: Button
-  m_TagString: Untagged
+  m_TagString: button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -361,4 +361,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AlphaLevel: 1
   buttonStroke: {fileID: 1926674322579941934}
-  hoverColor: {r: 0, g: 0.6745098, b: 0.75294125, a: 1}
+  buttonText: {fileID: 6486665239032799719}
+  hoverColor: {r: 0, g: 0.8117648, b: 0.9058824, a: 1}
+  styleColor: {r: 0, g: 0.050980397, b: 0.8117648, a: 1}

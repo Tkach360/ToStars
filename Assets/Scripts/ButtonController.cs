@@ -10,20 +10,23 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private Image btImage; // работать нужно именно с Image а не с Button
 
     [SerializeField] private GameObject buttonStroke;
-    [SerializeField] private Color hoverColor;
+    [SerializeField] public Color hoverColor;
+    [SerializeField] public Color styleColor;
+
     private Image btStImage;
     private Color normalColor;
 
-    private void Start()
+    private void Awake()
     {
         btImage = gameObject.GetComponent<Image>();
         btImage.alphaHitTestMinimumThreshold = AlphaLevel; // параметр alphaHitTestMinimumThreshold как раз и отвечает за то, какой минимальный уровень прозрачности должен быть у части текстуры, чтобы она могла обработать нажатие.
 
         btStImage = buttonStroke.GetComponent<Image>();
-        normalColor = btStImage.color;
+        btStImage.color = styleColor;
+        normalColor = styleColor;
+
+        Debug.Log(gameObject.name + " Awake");
     }
-
-
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -38,5 +41,12 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     public void SetNormalColor()
     {
         btStImage.color = normalColor;
+    }
+
+    public void SetStyleColors(Color styleColor, Color hoverColor)
+    {
+        btStImage.color = styleColor;
+        normalColor = styleColor;
+        this.hoverColor = hoverColor;
     }
 }
