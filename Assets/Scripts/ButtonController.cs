@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -10,10 +10,14 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
     private Image btImage; // работать нужно именно с Image а не с Button
 
     [SerializeField] private GameObject buttonStroke;
-    [SerializeField] public Color hoverColor;
-    [SerializeField] public Color styleColor;
+    [SerializeField] private GameObject buttonText;
+    //[SerializeField] public Color hoverColor;
+    //[SerializeField] public Color styleColor;
+    public Color hoverColor;
+    public Color styleColor;
 
     private Image btStImage;
+    private TextMeshProUGUI btTxt;
     private Color normalColor;
 
     private void Awake()
@@ -22,10 +26,9 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         btImage.alphaHitTestMinimumThreshold = AlphaLevel; // параметр alphaHitTestMinimumThreshold как раз и отвечает за то, какой минимальный уровень прозрачности должен быть у части текстуры, чтобы она могла обработать нажатие.
 
         btStImage = buttonStroke.GetComponent<Image>();
-        btStImage.color = styleColor;
-        normalColor = styleColor;
+        btTxt = buttonText.GetComponent<TextMeshProUGUI>();
 
-        Debug.Log(gameObject.name + " Awake");
+        //SetStyleColors(Color.white, Color.white);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -48,5 +51,6 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         btStImage.color = styleColor;
         normalColor = styleColor;
         this.hoverColor = hoverColor;
+        btTxt.color = hoverColor;
     }
 }

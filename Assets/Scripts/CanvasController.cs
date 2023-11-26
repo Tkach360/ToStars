@@ -1,10 +1,6 @@
-using JetBrains.Annotations;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CanvasConntroller : MonoBehaviour
@@ -22,16 +18,14 @@ public class CanvasConntroller : MonoBehaviour
     [SerializeField] private GameObject LevelSelectionMenu;
     private Transform levelSelectionMenu;
 
-    public event Action<VisualStyle> OnFinishedStart;
-
     private void OnEnable()
-    {
-        OnFinishedStart += SetStyle;
+    { 
+        SceneManager.sceneLoaded += SetStartStyle;
     }
 
     private void OnDisable()
     {
-        OnFinishedStart -= SetStyle;
+        SceneManager.sceneLoaded -= SetStartStyle;
     }
 
     private void Start()
@@ -42,27 +36,37 @@ public class CanvasConntroller : MonoBehaviour
         menuButtons = MenuButtons.transform;
         optionsMenu = OptionsMenu.transform;
         levelSelectionMenu = LevelSelectionMenu.transform;
+    }
 
-        OnFinishedStart.Invoke(StartStyle);
+    private void SetStartStyle(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.isLoaded && menuButtons != null)
+            SetStyle(StartStyle);
+        else
+            Debug.Log("unity разработан дебилами");
     }
 
     public void SetStyle(VisualStyle style)
     {
         // устанавливаем Background
-        Background1.GetComponent<Image>().material = style.background1;
-        Background2.GetComponent<Image>().material = style.background2;
-        Background3.GetComponent<Image>().material = style.background3;
+        BackgroundController bg1 = Background1.GetComponent<BackgroundController>();
+        BackgroundController bg2 = Background2.GetComponent<BackgroundController>();
+        BackgroundController bg3 = Background3.GetComponent<BackgroundController>();
+
+        bg1.SetBackground(style.background1, style.speedForBackground1);
+        bg2.SetBackground(style.background2, style.speedForBackground2);
+        bg3.SetBackground(style.background3, style.speedForBackground3);
+
 
         // устанавливаем все button
         ButtonController[] buttons = FindObjectsOfType<ButtonController>(true);
 
-        Debug.Log(buttons.Length);
-
         for (int i= 0;i < buttons.Length;i++)
         {
-            Debug.Log(buttons[i].name);
-            buttons[i].styleColor = style.styleColor;
-            buttons[i].hoverColor = style.hoverColor;
+            //Debug.Log(buttons[i].name);
+            /*buttons[i].styleColor = style.styleColor;
+            buttons[i].hoverColor = style.hoverColor;*/
+            buttons[i].SetStyleColors(style.styleColor, style.hoverColor);
         }
 
         // устанавливаем View для MenuButtons
