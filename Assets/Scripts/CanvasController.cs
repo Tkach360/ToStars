@@ -1,11 +1,12 @@
-using TMPro;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CanvasConntroller : MonoBehaviour
 {
-    [SerializeField] private VisualStyle StartStyle;
+    [SerializeField] private VisualStyle st;
+
+    [SerializeField] private VisualStyle[] ArrayStyles;
 
     [SerializeField] private GameObject Background1;
     [SerializeField] private GameObject Background2;
@@ -18,14 +19,29 @@ public class CanvasConntroller : MonoBehaviour
     [SerializeField] private GameObject LevelSelectionMenu;
     private Transform levelSelectionMenu;
 
-    private void OnEnable()
-    { 
-        SceneManager.sceneLoaded += SetStartStyle;
+    private void Awake()
+    {
+        StartCoroutine(WaitForAllObjects());
     }
 
-    private void OnDisable()
+    IEnumerator WaitForAllObjects()
     {
-        SceneManager.sceneLoaded -= SetStartStyle;
+        yield return new WaitUntil(() => AllObjectsLoaded());
+        SetStyle(ArrayStyles[PlayerPrefs.GetInt("VisualStyleNumber")]);
+    }
+
+    private bool AllObjectsLoaded()
+    {
+
+        GameObject[] sceneObjects = FindObjectsOfType<GameObject>();
+        foreach (GameObject obj in sceneObjects)
+        {
+            if (!obj.activeSelf)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     private void Start()
@@ -38,16 +54,10 @@ public class CanvasConntroller : MonoBehaviour
         levelSelectionMenu = LevelSelectionMenu.transform;
     }
 
-    private void SetStartStyle(Scene scene, LoadSceneMode mode)
-    {
-        if (scene.isLoaded && menuButtons != null)
-            SetStyle(StartStyle);
-        else
-            Debug.Log("unity разработан дебилами");
-    }
-
     public void SetStyle(VisualStyle style)
     {
+        st = style;
+
         // устанавливаем Background
         BackgroundController bg1 = Background1.GetComponent<BackgroundController>();
         BackgroundController bg2 = Background2.GetComponent<BackgroundController>();
@@ -63,13 +73,10 @@ public class CanvasConntroller : MonoBehaviour
 
         for (int i= 0;i < buttons.Length;i++)
         {
-            //Debug.Log(buttons[i].name);
-            /*buttons[i].styleColor = style.styleColor;
-            buttons[i].hoverColor = style.hoverColor;*/
             buttons[i].SetStyleColors(style.styleColor, style.hoverColor);
         }
 
-        // устанавливаем View для MenuButtons
+        //устанавливаем View для MenuButtons
         menuButtons.Find("View").gameObject.GetComponent<Image>().sprite = style.buttonsView;
 
         // устанавливаем Icon
@@ -83,7 +90,7 @@ public class CanvasConntroller : MonoBehaviour
         // устанавливаем Stroke для LevelSelectionMenu
         levelSelectionMenu.Find("Stroke").gameObject.GetComponent<Image>().color = style.styleColor;
 
-        Debug.Log("selected style");
+        //Debug.Log("selected style");
     }
 
 }

@@ -551,7 +551,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86f22545ad20b6d42aa6ad8569531ebb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartStyle: {fileID: 11400000, guid: 3954f05975440b149ab9ca7e46c09f03, type: 2}
+  ArrayStyles:
+  - {fileID: 11400000, guid: 3954f05975440b149ab9ca7e46c09f03, type: 2}
+  - {fileID: 11400000, guid: a6b52a99e73a34741a1875f54942b20a, type: 2}
+  - {fileID: 11400000, guid: 034491bf536715e4e8b920c7350971c2, type: 2}
   Background1: {fileID: 109256597}
   Background2: {fileID: 1916812528}
   Background3: {fileID: 1319815746}
