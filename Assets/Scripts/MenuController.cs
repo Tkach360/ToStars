@@ -12,8 +12,13 @@ public class MenuController : MonoBehaviour
         Application.Quit();
     }
 
-    public void RunLevel()
+    public void RunEasyMode()
     {
-        Debug.Log("Run Level");
+        Debug.Log("Run EasyMode");
+    }
+
+    public void RunHardMode()
+    {
+        Debug.Log("Run HardMode");
     }
 }

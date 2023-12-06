@@ -4,9 +4,8 @@ using UnityEngine.UI;
 
 public class CanvasConntroller : MonoBehaviour
 {
-    [SerializeField] private VisualStyle st;
-
     [SerializeField] private VisualStyle[] ArrayStyles;
+    private VisualStyle CurrentStyle;
 
     [SerializeField] private GameObject Background1;
     [SerializeField] private GameObject Background2;
@@ -14,10 +13,6 @@ public class CanvasConntroller : MonoBehaviour
 
     [SerializeField] private GameObject MenuButtons;
     private Transform menuButtons;
-    [SerializeField] private GameObject OptionsMenu;
-    private Transform optionsMenu;
-    [SerializeField] private GameObject LevelSelectionMenu;
-    private Transform levelSelectionMenu;
 
     private void Awake()
     {
@@ -46,17 +41,12 @@ public class CanvasConntroller : MonoBehaviour
 
     private void Start()
     {
-        OptionsMenu.SetActive(false);
-        LevelSelectionMenu.SetActive(false);
-
         menuButtons = MenuButtons.transform;
-        optionsMenu = OptionsMenu.transform;
-        levelSelectionMenu = LevelSelectionMenu.transform;
     }
 
     public void SetStyle(VisualStyle style)
     {
-        st = style;
+        CurrentStyle = style;
 
         for(int i = 0; i < ArrayStyles.Length; i++)
         {
@@ -82,25 +72,14 @@ public class CanvasConntroller : MonoBehaviour
 
         for (int i= 0;i < buttons.Length;i++)
         {
-            Debug.Log(i);
             buttons[i].SetStyleColors(style.styleColor, style.hoverColor);
         }
 
-        //устанавливаем View для MenuButtons
-        menuButtons.Find("View").gameObject.GetComponent<Image>().sprite = style.buttonsView;
-
         // устанавливаем Icon
         Transform icon = menuButtons.Find("Icon").transform;
+
         icon.Find("IconView").gameObject.GetComponent<Image>().color = style.styleColor;
         icon.Find("IconWords").gameObject.GetComponent<Image>().color = style.hoverColor;
-
-        // устанавливаем Stroke для OptionsMenu
-        optionsMenu.Find("Stroke").gameObject.GetComponent<Image>().color = style.styleColor;
-
-        // устанавливаем Stroke для LevelSelectionMenu
-        levelSelectionMenu.Find("Stroke").gameObject.GetComponent<Image>().color = style.styleColor;
-
-        //Debug.Log("selected style");
     }
 
 }
