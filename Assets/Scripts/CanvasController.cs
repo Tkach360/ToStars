@@ -58,6 +58,15 @@ public class CanvasConntroller : MonoBehaviour
     {
         st = style;
 
+        for(int i = 0; i < ArrayStyles.Length; i++)
+        {
+            if (ArrayStyles[i] == style)
+            {
+                PlayerPrefs.SetInt("VisualStyleNumber", i);
+                break;
+            }
+        }
+
         // устанавливаем Background
         BackgroundController bg1 = Background1.GetComponent<BackgroundController>();
         BackgroundController bg2 = Background2.GetComponent<BackgroundController>();
@@ -73,6 +82,7 @@ public class CanvasConntroller : MonoBehaviour
 
         for (int i= 0;i < buttons.Length;i++)
         {
+            Debug.Log(i);
             buttons[i].SetStyleColors(style.styleColor, style.hoverColor);
         }
 
