@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99ef0ce815d85dc4f95c9612cd980ee8, type: 3}
+  m_Name: Style1
+  m_EditorClassIdentifier: 
+  _background1: {fileID: 2100000, guid: 142a1b15bfdcca44bb1358cd98a6698d, type: 2}
+  _speedForBackground1: 0.02
+  _background2: {fileID: 2100000, guid: 75b580ac6f9368648ad24afb660968eb, type: 2}
+  _speedForBackground2: 0.03
+  _background3: {fileID: 2100000, guid: 2a82dfc14ac2aa546a7b0c732bec9af2, type: 2}
+  _speedForBackground3: 0.04
+  _buttonsView: {fileID: 21300000, guid: d0b9ca84704d14d44b9d9288a4bbbdde, type: 3}
+  _styleColor: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 1}
+  _hoverColor: {r: 0.7530082, g: 0.750445, b: 0.754717, a: 1}
