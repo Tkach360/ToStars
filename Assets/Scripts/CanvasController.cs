@@ -1,16 +1,17 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CanvasConntroller : MonoBehaviour
 {
     [SerializeField] private VisualStyle[] ArrayStyles;
-    private VisualStyle CurrentStyle;
 
     [SerializeField] private GameObject Background1;
     [SerializeField] private GameObject Background2;
     [SerializeField] private GameObject Background3;
 
+    [SerializeField] private Image HealthBarBorder;
     [SerializeField] private GameObject MenuButtons;
     private Transform menuButtons;
 
@@ -46,7 +47,6 @@ public class CanvasConntroller : MonoBehaviour
 
     public void SetStyle(VisualStyle style)
     {
-        CurrentStyle = style;
 
         for(int i = 0; i < ArrayStyles.Length; i++)
         {
@@ -75,11 +75,21 @@ public class CanvasConntroller : MonoBehaviour
             buttons[i].SetStyleColors(style.styleColor, style.hoverColor);
         }
 
+        // учтанавлияем цвет всех текстов
+        TextMeshProUGUI[] texts = FindObjectsOfType<TextMeshProUGUI>(true);
+
+        for (int i = 0; i < texts.Length; i++)
+        {
+            texts[i].color = style.hoverColor;
+        }
+
         // устанавливаем Icon
         Transform icon = menuButtons.Find("Icon").transform;
 
         icon.Find("IconView").gameObject.GetComponent<Image>().color = style.styleColor;
         icon.Find("IconWords").gameObject.GetComponent<Image>().color = style.hoverColor;
+
+        HealthBarBorder.color = style.styleColor;
     }
 
 }
