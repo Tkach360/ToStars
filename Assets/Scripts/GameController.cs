@@ -6,7 +6,20 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject MenuButtons;
     [SerializeField] private GameObject PauseMenu;
     [SerializeField] private PointsController RecordTable;
+    [SerializeField] private PointsController PointsTable;
 
+
+    private void Start()
+    {
+        if (!PlayerPrefs.HasKey("EasyModeRecord"))
+        {
+            PlayerPrefs.SetInt("EasyModeRecord", 0);
+        }
+        if (!PlayerPrefs.HasKey("HardModeRecord"))
+        {
+            PlayerPrefs.SetInt("HardModeRecord", 0);
+        }
+    }
     public void Exit()
     {
         Debug.Log("exit");
@@ -31,6 +44,7 @@ public class GameController : MonoBehaviour
     {
         PlayInterface.SetActive(true);
         MenuButtons.SetActive(false);
+        PointsTable.SetPoints(0);
     }
 
     public void SetPause()

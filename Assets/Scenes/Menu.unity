@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &43938249
 Transform:
   m_ObjectHideFlags: 0
@@ -948,7 +948,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &441567101
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1831,7 +1831,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &784077442
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2205,6 +2205,8 @@ MonoBehaviour:
   PlayInterface: {fileID: 784077441}
   MenuButtons: {fileID: 43938248}
   PauseMenu: {fileID: 938486816}
+  RecordTable: {fileID: 1045441032}
+  PointsTable: {fileID: 1536876857}
 --- !u!1 &938486816
 GameObject:
   m_ObjectHideFlags: 0
@@ -2517,6 +2519,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause
       objectReference: {fileID: 0}
+    - target: {fileID: 6990681944794066536, guid: 57ec9151e7f0cc34c8543c55355320d9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8406907078515486383, guid: 57ec9151e7f0cc34c8543c55355320d9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2650,7 +2656,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 575, y: 432}
+  m_AnchoredPosition: {x: 575, y: 408}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1281579541
@@ -2869,7 +2875,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1443320507
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3904,11 +3910,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3011450074192208125, guid: db32811da72e5ba4f8d561e6e179b51d, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3011450074192208125, guid: db32811da72e5ba4f8d561e6e179b51d, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4839932444341816149, guid: db32811da72e5ba4f8d561e6e179b51d, type: 3}
       propertyPath: Action.m_PersistentCalls.m_Calls.Array.size

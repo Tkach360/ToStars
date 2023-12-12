@@ -6,26 +6,23 @@ public class PointsController : MonoBehaviour
     private TextMeshProUGUI table;
     private int _points;
 
-    private void Start()
+    private string _name;
+
+    private void Awake()
     {
         table = gameObject.GetComponent<TextMeshProUGUI>();
-    }
-
-    public void OnStartGame()
-    {
-        _points = 0;
-        table.text = table.text + "0";
+        _name = table.text;
     }
 
     public void AddPoints(int points)
     {
         _points += points;
-        table.text = table.text + _points.ToString();
+        table.text = _name + _points.ToString();
     }
 
-    public void SetPoints(int points) 
+    public void SetPoints(int points)
     {
         _points = points;
-        table.text = table.text + _points.ToString();
+        table.text = _name + _points.ToString();
     }
 }
