@@ -1,12 +1,14 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameController : MonoBehaviour
 {
     [SerializeField] private GameObject PlayInterface;
     [SerializeField] private GameObject MenuButtons;
     [SerializeField] private GameObject PauseMenu;
-    [SerializeField] private PointsController RecordTable;
-    [SerializeField] private PointsController PointsTable;
+    [SerializeField] private TableController RecordTable;
+
+    public UnityEvent StartGame;
 
 
     private void Start()
@@ -22,29 +24,38 @@ public class GameController : MonoBehaviour
     }
     public void Exit()
     {
-        Debug.Log("exit");
+        Debug.Log("exit"); ////////////////
+
+
         Application.Quit();
     }
 
     public void RunEasyMode()
     {
-        Debug.Log("Run EasyMode");
+        Debug.Log("Run EasyMode"); /////////////
+
+
         RunGame();
-        RecordTable.SetPoints(PlayerPrefs.GetInt("EasyModeRecord"));
+        RecordTable.SetTablePoints(PlayerPrefs.GetInt("EasyModeRecord"));
     }
 
     public void RunHardMode()
     {
-        Debug.Log("Run HardMode");
+        Debug.Log("Run HardMode"); /////////
+
+
         RunGame();
-        RecordTable.SetPoints(PlayerPrefs.GetInt("HardModeRecord"));
+        RecordTable.SetTablePoints(PlayerPrefs.GetInt("HardModeRecord"));
     }
 
     private void RunGame()
     {
+        // тут всё, что происходит при начале игры вне зависимости от режима
+
         PlayInterface.SetActive(true);
         MenuButtons.SetActive(false);
-        PointsTable.SetPoints(0);
+
+        StartGame?.Invoke();
     }
 
     public void SetPause()

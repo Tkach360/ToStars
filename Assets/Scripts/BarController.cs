@@ -1,11 +1,14 @@
-using System;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class BarController : MonoBehaviour
 {
-    [SerializeField] private Slider barSlider;
+    private Slider barSlider;
+
+    private void Awake()
+    {
+        barSlider = GetComponent<Slider>();
+    }
 
     public void SetMaxValue(int maxValue)
     {
