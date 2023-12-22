@@ -1,13 +1,14 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BonusTimer : MonoBehaviour
 {
-    // этот код можно перетащить в PlayerController и сделать так, чтобы именно PlayerController
-    // отвечал за время, а BonusTimer лишь показывал это время
     private float _time;
     private TextMeshProUGUI _table;
     private string _name;
+
+    public UnityEvent OnBonusOver;
 
     private void Awake()
     {
@@ -27,7 +28,11 @@ public class BonusTimer : MonoBehaviour
 
 
         }
-        else gameObject.SetActive(false);
+        else
+        {
+            gameObject.SetActive(false);
+            OnBonusOver?.Invoke();
+        }
     }
 
     public void AddTime(float time)

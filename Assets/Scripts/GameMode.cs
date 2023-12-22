@@ -1,10 +1,18 @@
 
+// класс, содержащий всю информацию о режиме игры, можно сделать ScriptableObject
 public class GameMode
 {
-    public string name { get; set; }
+    private string _name;
+    private string _recordName;
+
+    public string name => this._name;
+    public string recordName => this._recordName;
 
     public GameMode(string gameModeName)
     {
-        name = gameModeName;
+        _name = gameModeName;
+        _recordName = gameModeName + "Record";
     }
+
+    // нужно что-то ещё
 }

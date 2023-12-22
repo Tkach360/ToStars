@@ -8,9 +8,9 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject GameOverMenu;
     [SerializeField] private TableController RecordTable;
 
-    private GameMode _nowGameMode;
+    private GameMode _nowGameMode; // текущий режим игры
 
-    public UnityEvent OnStartGame;
+    public UnityEvent OnStartGame; // при старте игры
 
 
     private void Start()
@@ -37,30 +37,21 @@ public class GameController : MonoBehaviour
 
     public void Exit()
     {
-        Debug.Log("exit"); ////////////////
-
-
         Application.Quit();
     }
 
     public void RunEasyMode()
     {
-        Debug.Log("Run EasyMode"); /////////////
-
-
         RunGame();
-        RecordTable.SetTablePoints(PlayerPrefs.GetInt("EasyModeRecord"));
         _nowGameMode = new GameMode("EasyMode");
+        RecordTable.SetTablePoints(PlayerPrefs.GetInt(_nowGameMode.recordName));
     }
 
     public void RunHardMode()
     {
-        Debug.Log("Run HardMode"); /////////
-
-
         RunGame();
-        RecordTable.SetTablePoints(PlayerPrefs.GetInt("HardModeRecord"));
-        _nowGameMode = new GameMode("EasyMode");
+        _nowGameMode = new GameMode("HardMode");
+        RecordTable.SetTablePoints(PlayerPrefs.GetInt(_nowGameMode.recordName));
     }
 
     private void RunGame()
@@ -85,7 +76,7 @@ public class GameController : MonoBehaviour
         GameOverMenu.SetActive(true);
     }
 
-    public void SetPause(bool mode)
+    public void SetPause(bool mode) // установка паузы
     {
         if (mode)
         {
@@ -95,5 +86,11 @@ public class GameController : MonoBehaviour
         {
             Time.timeScale = 1.0f;
         }
+    }
+
+    public void ResetRecords()
+    {
+        PlayerPrefs.SetInt("EasyModeRecord", 0);
+        PlayerPrefs.SetInt("HardModeRecord", 0);
     }
 }
