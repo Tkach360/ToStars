@@ -1,12 +1,16 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameController : MonoBehaviour
 {
     [SerializeField] private GameObject PlayInterface;
     [SerializeField] private GameObject MenuButtons;
-    [SerializeField] private GameObject PauseMenu;
-    [SerializeField] private PointsController RecordTable;
-    [SerializeField] private PointsController PointsTable;
+    [SerializeField] private GameObject GameOverMenu;
+    [SerializeField] private TableController RecordTable;
+
+    private GameMode _nowGameMode; // текущий режим игры
+
+    public UnityEvent OnStartGame; // при старте игры
 
 
     private void Start()
@@ -20,53 +24,73 @@ public class GameController : MonoBehaviour
             PlayerPrefs.SetInt("HardModeRecord", 0);
         }
     }
+
+    private void OnEnable()
+    {
+        PlayerController.OnHealthOver += GameOver;
+    }
+
+    private void OnDisable()
+    {
+        PlayerController.OnHealthOver -= GameOver;
+    }
+
     public void Exit()
     {
-        Debug.Log("exit");
         Application.Quit();
     }
 
     public void RunEasyMode()
     {
-        Debug.Log("Run EasyMode");
         RunGame();
-        RecordTable.SetPoints(PlayerPrefs.GetInt("EasyModeRecord"));
+        _nowGameMode = new GameMode("EasyMode");
+        RecordTable.SetTablePoints(PlayerPrefs.GetInt(_nowGameMode.recordName));
     }
 
     public void RunHardMode()
     {
-        Debug.Log("Run HardMode");
         RunGame();
-        RecordTable.SetPoints(PlayerPrefs.GetInt("HardModeRecord"));
+        _nowGameMode = new GameMode("HardMode");
+        RecordTable.SetTablePoints(PlayerPrefs.GetInt(_nowGameMode.recordName));
     }
 
     private void RunGame()
     {
+        // тут всё, что происходит при начале игры вне зависимости от режима
+
         PlayInterface.SetActive(true);
         MenuButtons.SetActive(false);
-        PointsTable.SetPoints(0);
+
+        OnStartGame?.Invoke();
     }
 
-    public void SetPause()
+    public void GameOver(int points)
     {
-        if (!PauseMenu.activeSelf)
+        string recordName = _nowGameMode.name + "Record";
+        if (points > PlayerPrefs.GetInt(recordName))
+            PlayerPrefs.SetInt(recordName, points);
+
+        //тут может быть анимация и прочая логика GameOver
+
+        SetPause(true);
+        GameOverMenu.SetActive(true);
+    }
+
+    public void SetPause(bool mode) // установка паузы
+    {
+        if (mode)
         {
             Time.timeScale = 0.0f;
-            PauseMenu.SetActive(true);
         }
         else
         {
             Time.timeScale = 1.0f;
-            PauseMenu.SetActive(false);
         }
     }
 
-    public void FinishGameWithoutSaving()
+    public void ResetRecords()
     {
-        PlayInterface.SetActive(false);
-        SetPause();
-        PauseMenu.SetActive(false);
-        MenuButtons.SetActive(true);
-
+        PlayerPrefs.SetInt("EasyModeRecord", 0);
+        PlayerPrefs.SetInt("HardModeRecord", 0);
     }
 }
