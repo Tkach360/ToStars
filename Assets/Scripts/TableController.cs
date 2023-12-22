@@ -12,7 +12,7 @@ public class TableController : MonoBehaviour
     {
         table = gameObject.GetComponent<TextMeshProUGUI>();
         _name = table.text;
-        //SetTablePoints(0);
+        SetTablePoints(0);
     }
 
     public void SetTablePoints(int points)

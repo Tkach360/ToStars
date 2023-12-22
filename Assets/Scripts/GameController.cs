@@ -5,10 +5,12 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] private GameObject PlayInterface;
     [SerializeField] private GameObject MenuButtons;
-    [SerializeField] private GameObject PauseMenu;
+    [SerializeField] private GameObject GameOverMenu;
     [SerializeField] private TableController RecordTable;
 
-    public UnityEvent StartGame;
+    private GameMode _nowGameMode;
+
+    public UnityEvent OnStartGame;
 
 
     private void Start()
@@ -22,6 +24,17 @@ public class GameController : MonoBehaviour
             PlayerPrefs.SetInt("HardModeRecord", 0);
         }
     }
+
+    private void OnEnable()
+    {
+        PlayerController.OnHealthOver += GameOver;
+    }
+
+    private void OnDisable()
+    {
+        PlayerController.OnHealthOver -= GameOver;
+    }
+
     public void Exit()
     {
         Debug.Log("exit"); ////////////////
@@ -37,6 +50,7 @@ public class GameController : MonoBehaviour
 
         RunGame();
         RecordTable.SetTablePoints(PlayerPrefs.GetInt("EasyModeRecord"));
+        _nowGameMode = new GameMode("EasyMode");
     }
 
     public void RunHardMode()
@@ -46,6 +60,7 @@ public class GameController : MonoBehaviour
 
         RunGame();
         RecordTable.SetTablePoints(PlayerPrefs.GetInt("HardModeRecord"));
+        _nowGameMode = new GameMode("EasyMode");
     }
 
     private void RunGame()
@@ -55,29 +70,30 @@ public class GameController : MonoBehaviour
         PlayInterface.SetActive(true);
         MenuButtons.SetActive(false);
 
-        StartGame?.Invoke();
+        OnStartGame?.Invoke();
     }
 
-    public void SetPause()
+    public void GameOver(int points)
     {
-        if (!PauseMenu.activeSelf)
+        string recordName = _nowGameMode.name + "Record";
+        if (points > PlayerPrefs.GetInt(recordName))
+            PlayerPrefs.SetInt(recordName, points);
+
+        //тут может быть анимация и прочая логика GameOver
+
+        SetPause(true);
+        GameOverMenu.SetActive(true);
+    }
+
+    public void SetPause(bool mode)
+    {
+        if (mode)
         {
             Time.timeScale = 0.0f;
-            PauseMenu.SetActive(true);
         }
         else
         {
             Time.timeScale = 1.0f;
-            PauseMenu.SetActive(false);
         }
-    }
-
-    public void FinishGameWithoutSaving()
-    {
-        PlayInterface.SetActive(false);
-        SetPause();
-        PauseMenu.SetActive(false);
-        MenuButtons.SetActive(true);
-
     }
 }
