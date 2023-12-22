@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,7 +7,7 @@ public class PlayerController : MonoBehaviour
     private int _health;
     private int _points;
 
-    public static UnityAction<int> OnSetMaxHealth;
+    public UnityEvent<int> OnStartGame;
     public UnityEvent<int> OnHealthChange;
 
     public UnityEvent<int> OnGetPoints;
@@ -21,7 +20,12 @@ public class PlayerController : MonoBehaviour
         _health = maxHealth;
     }
 
-    public void Damage(int value)
+    public void StartGame()
+    {
+        OnStartGame?.Invoke(maxHealth);
+    }
+
+    public void TakeDamage(int value)
     {
         _health -= value;
         OnHealthChange?.Invoke(_health);
