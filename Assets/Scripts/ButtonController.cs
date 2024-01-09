@@ -5,17 +5,17 @@ using UnityEngine.UI;
 
 public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [Range(0f, 1f)] // ползунок от 0 до 1
-    public float AlphaLevel = 1f; // минимальное значение альфа-канала, которое должна иметь часть текстуры, на которую наведен курсор, чтобы обрабатывать нажатия
+    //[Range(0f, 1f)] // ползунок от 0 до 1
+    private float AlphaLevel = 1f; // минимальное значение альфа-канала, которое должна иметь часть текстуры, на которую наведен курсор, чтобы обрабатывать нажатия
     private Image btImage; // работать нужно именно с Image а не с Button
 
     [SerializeField] private GameObject buttonStroke;
     [SerializeField] private GameObject buttonText;
     //[SerializeField] public Color hoverColor;
     //[SerializeField] public Color styleColor;
-    public Color hoverColor;
-    public Color styleColor;
+    //private Color styleColor;
 
+    private Color hoverColor;
     private Image btStImage;
     private TextMeshProUGUI btTxt;
     private Color normalColor;

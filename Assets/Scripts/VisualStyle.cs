@@ -12,7 +12,7 @@ public class VisualStyle : ScriptableObject
     [SerializeField] private Material _background3;
     [SerializeField] private float _speedForBackground3;
 
-    [SerializeField] private Sprite _buttonsView;
+    //[SerializeField] private Sprite _buttonsView;
     [SerializeField] private Color _styleColor;
     [SerializeField] private Color _hoverColor;
     public Material background1 => this._background1;
@@ -21,7 +21,7 @@ public class VisualStyle : ScriptableObject
     public float speedForBackground1 => this._speedForBackground1;
     public float speedForBackground2 => this._speedForBackground2;
     public float speedForBackground3 => this._speedForBackground3;
-    public Sprite buttonsView => this._buttonsView;
+    //public Sprite buttonsView => this._buttonsView;
     public Color hoverColor => this._hoverColor;
     public Color styleColor => this._styleColor;
 
