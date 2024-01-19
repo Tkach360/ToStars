@@ -7,10 +7,13 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject MenuButtons;
     [SerializeField] private GameObject GameOverMenu;
     [SerializeField] private TableController RecordTable;
+    [SerializeField] private GameObject Player;
+    [SerializeField] private GameObject Spawner;
+
 
     private GameMode _nowGameMode; // текущий режим игры
 
-    public UnityEvent OnStartGame; // при старте игры
+    public static UnityAction OnStartGame; // при старте игры
 
 
     private void Start()
@@ -60,7 +63,8 @@ public class GameController : MonoBehaviour
 
         PlayInterface.SetActive(true);
         MenuButtons.SetActive(false);
-
+        Player.SetActive(true);
+        Spawner.SetActive(true);
         OnStartGame?.Invoke();
     }
 
