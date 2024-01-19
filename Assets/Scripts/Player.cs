@@ -5,9 +5,9 @@ using UnityEngine.Events;
 public class Player : MonoBehaviour
 {
     [SerializeField] public int maxHealth;
+    private int _givePoints;
     private int _health;
     private int _points;
-    private int _givePoints;
 
     public UnityEvent<int> OnSetMaxHealth; // установка максимального количества жизней
     public static UnityAction<int> OnHealthOver; // когда жизни закончились
@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
         if (_health <= 0)
         {
             OnHealthOver?.Invoke(_points);
+            _givePoints = 0;
         }
     }
 
@@ -75,10 +76,13 @@ public class Player : MonoBehaviour
         OnHealthChange?.Invoke(_health);
 
     }
+
     public void Update()
     {
+
         AddPoints(_givePoints);
     }
+
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Bonus"))

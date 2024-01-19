@@ -1,14 +1,15 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] private GameObject PlayInterface;
-    [SerializeField] private GameObject MenuButtons;
-    [SerializeField] private GameObject GameOverMenu;
-    [SerializeField] private TableController RecordTable;
-    [SerializeField] private GameObject Player;
-    [SerializeField] private GameObject Spawner;
+    [SerializeField] private GameObject _playInterface;
+    [SerializeField] private GameObject _menuButtons;
+    [SerializeField] private GameObject _gameOverMenu;
+    [SerializeField] private TableController _recordTable;
+    [SerializeField] private GameObject _player;
+    [SerializeField] private GameObject _spawner;
 
 
     private GameMode _nowGameMode; // текущий режим игры
@@ -30,12 +31,12 @@ public class GameController : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerController.OnHealthOver += GameOver;
+        Player.OnHealthOver += GameOver;
     }
 
     private void OnDisable()
     {
-        PlayerController.OnHealthOver -= GameOver;
+        Player.OnHealthOver -= GameOver;
     }
 
     public void Exit()
@@ -47,24 +48,24 @@ public class GameController : MonoBehaviour
     {
         RunGame();
         _nowGameMode = new GameMode("EasyMode");
-        RecordTable.SetTablePoints(PlayerPrefs.GetInt(_nowGameMode.recordName));
+        _recordTable.SetTablePoints(PlayerPrefs.GetInt(_nowGameMode.recordName));
     }
 
     public void RunHardMode()
     {
         RunGame();
         _nowGameMode = new GameMode("HardMode");
-        RecordTable.SetTablePoints(PlayerPrefs.GetInt(_nowGameMode.recordName));
+        _recordTable.SetTablePoints(PlayerPrefs.GetInt(_nowGameMode.recordName));
     }
 
     private void RunGame()
     {
         // тут всё, что происходит при начале игры вне зависимости от режима
 
-        PlayInterface.SetActive(true);
-        MenuButtons.SetActive(false);
-        Player.SetActive(true);
-        Spawner.SetActive(true);
+        _playInterface.SetActive(true);
+        _menuButtons.SetActive(false);
+        _player.SetActive(true);
+        _spawner.SetActive(true);
         OnStartGame?.Invoke();
     }
 
@@ -77,7 +78,7 @@ public class GameController : MonoBehaviour
         //тут может быть анимация и прочая логика GameOver
 
         SetPause(true);
-        GameOverMenu.SetActive(true);
+        _gameOverMenu.SetActive(true);
     }
 
     public void SetPause(bool mode) // установка паузы
@@ -90,6 +91,24 @@ public class GameController : MonoBehaviour
         {
             Time.timeScale = 1.0f;
         }
+    }
+
+    public void ClearScene()
+    {
+        DelGameObjectOfTag("Enemy");
+        DelGameObjectOfTag("Bullet");
+        DelGameObjectOfTag("Bonus");
+        DelGameObjectOfTag("Isometric");
+        DelGameObjectOfTag("Vertical");
+
+        _spawner.SetActive(false);
+        _player.SetActive(false);
+    }
+
+    private void DelGameObjectOfTag(string tag)
+    {
+        GameObject[] objects = GameObject.FindGameObjectsWithTag(tag);
+        foreach (GameObject obj in objects) Destroy(obj);
     }
 
     public void ResetRecords()
