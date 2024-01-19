@@ -2,21 +2,19 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class BonusTimer : MonoBehaviour
+abstract public class BonusTimer : MonoBehaviour
 {
-    private float _time;
-    private TextMeshProUGUI _table;
-    private string _name;
+    protected float _time;
+    protected TextMeshProUGUI _table;
+    protected string _name;
 
-    public UnityEvent OnBonusOver;
-
-    private void Awake()
+    protected void Awake()
     {
         _table = gameObject.GetComponent<TextMeshProUGUI>();
         _name = _table.text;
     }
 
-    private void Update()
+    protected void Update()
     {
         if (_time > 0f)
         {
@@ -31,7 +29,7 @@ public class BonusTimer : MonoBehaviour
         else
         {
             gameObject.SetActive(false);
-            OnBonusOver?.Invoke();
+            EndBonus();
         }
     }
 
@@ -46,4 +44,6 @@ public class BonusTimer : MonoBehaviour
     {
         _time = time;
     }
+
+    abstract public void EndBonus();
 }

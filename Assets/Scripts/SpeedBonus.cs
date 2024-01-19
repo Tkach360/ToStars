@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class SpeedBonus : Bonus
 {
-    // Start is called before the first frame update
-    void Start()
+    override public void AddBonus(GameObject player)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        player.GetComponent<Player>().AddSlowedBonus(1);
+        Destroy(gameObject);
     }
 }

@@ -25,4 +25,8 @@ public class PlayerMover : MonoBehaviour
             _rigidbody2D.velocity = new Vector2(_speed, -_tapForce);
         }
     }
+    public void ChangeSpeed(float times)
+    {
+        _speed = _speed / times;
+    }
 }

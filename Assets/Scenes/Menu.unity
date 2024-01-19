@@ -1348,7 +1348,7 @@ GameObject:
   - component: {fileID: 441567101}
   - component: {fileID: 441567105}
   - component: {fileID: 441567104}
-  - component: {fileID: 441567106}
+  - component: {fileID: 441567107}
   m_Layer: 9
   m_Name: x2
   m_TagString: Untagged
@@ -1473,7 +1473,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 441567100}
   m_CullTransparentMesh: 1
---- !u!114 &441567106
+--- !u!114 &441567107
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1482,12 +1482,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 441567100}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5c61737acda9284ebe0c75d82f7c2a1, type: 3}
+  m_Script: {fileID: 11500000, guid: 87571f00c5395d34aacb4c210c10bc5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnBonusOver:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1001 &493903217
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2820,10 +2817,34 @@ MonoBehaviour:
         m_CallState: 2
   OnGetSlowedBonus:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: ed62b18d2e97b3745b51b3e87591c634, type: 3}
+        m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnGetX2Bonus:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: 87571f00c5395d34aacb4c210c10bc5c, type: 3}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &906334212 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2168683033079495193, guid: 4013430f213f85a479b4a103f785fe46, type: 3}
@@ -4214,7 +4235,7 @@ GameObject:
   - component: {fileID: 1443320507}
   - component: {fileID: 1443320511}
   - component: {fileID: 1443320510}
-  - component: {fileID: 1443320512}
+  - component: {fileID: 1443320513}
   m_Layer: 9
   m_Name: Slowed
   m_TagString: Untagged
@@ -4339,7 +4360,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1443320506}
   m_CullTransparentMesh: 1
---- !u!114 &1443320512
+--- !u!114 &1443320513
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4348,12 +4369,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1443320506}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5c61737acda9284ebe0c75d82f7c2a1, type: 3}
+  m_Script: {fileID: 11500000, guid: ed62b18d2e97b3745b51b3e87591c634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnBonusOver:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!224 &1477614380 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8406907078515486383, guid: 57ec9151e7f0cc34c8543c55355320d9, type: 3}

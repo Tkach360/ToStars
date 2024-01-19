@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class PointsBonus : Bonus
 {
-    // Start is called before the first frame update
-    void Start()
+    override public void AddBonus(GameObject player)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        player.GetComponent<Player>().AddX2Bonus(10);
+        Destroy(gameObject);
     }
 }
