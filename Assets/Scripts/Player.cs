@@ -1,11 +1,14 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 
 public class Player : MonoBehaviour
 {
     [SerializeField] public int maxHealth;
-    private int _givePoints;
+    [SerializeField] private float _timePointsDelay = 1f;
+    [SerializeField] private int _pointsAtTime = 1;
     private int _health;
     private int _points;
 
@@ -21,20 +24,34 @@ public class Player : MonoBehaviour
     private void OnEnable()
     {
         GameController.OnStartGame += StartGame;
-
+        X2Timer.EndX2Bonus += RemovePointsBonus;
+        SlowedTimer.EndSlowedBonus += RemoveSlowedBonus;
     }
 
     private void OnDisable()
     {
         GameController.OnStartGame -= StartGame;
+        X2Timer.EndX2Bonus -= RemovePointsBonus;
+        SlowedTimer.EndSlowedBonus -= RemoveSlowedBonus;
     }
 
     public void StartGame() // установка характеристик при начале игры (после нажатия одной из кнопок начала игры)
     {
         OnSetMaxHealth?.Invoke(maxHealth);
         _health = maxHealth;
-        _givePoints = 1;
+        _points = 0;
+        StartCoroutine(IncreaseCounter());
     }
+
+    private IEnumerator IncreaseCounter()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(_timePointsDelay);
+            AddPoints(_pointsAtTime);
+        }
+    }
+
 
     public void TakeDamage(int value)
     {
@@ -44,7 +61,7 @@ public class Player : MonoBehaviour
         if (_health <= 0)
         {
             OnHealthOver?.Invoke(_points);
-            _givePoints = 0;
+            StopCoroutine(IncreaseCounter());
         }
     }
 
@@ -60,11 +77,15 @@ public class Player : MonoBehaviour
         OnGetSlowedBonus?.Invoke(time);
     }
 
+    private void RemoveSlowedBonus() => GetComponent<PlayerMover>().ChangeSpeed(0.5f);
+
     public void AddX2Bonus(float time)
     {
-        _givePoints = 2;
+        _pointsAtTime = 2;
         OnGetX2Bonus?.Invoke(time);
     }
+
+    private void RemovePointsBonus() => _pointsAtTime = 1;
 
     public void AddHPBonus()
     {
@@ -75,12 +96,6 @@ public class Player : MonoBehaviour
         }
         OnHealthChange?.Invoke(_health);
 
-    }
-
-    public void Update()
-    {
-
-        AddPoints(_givePoints);
     }
 
     public void OnTriggerEnter2D(Collider2D other)

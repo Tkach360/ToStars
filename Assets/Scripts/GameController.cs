@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject _menuButtons;
     [SerializeField] private GameObject _gameOverMenu;
     [SerializeField] private TableController _recordTable;
+    [SerializeField] private TableController _pointsTable;
     [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _spawner;
 
@@ -67,6 +68,7 @@ public class GameController : MonoBehaviour
         _player.SetActive(true);
         _spawner.SetActive(true);
         OnStartGame?.Invoke();
+        _pointsTable.SetTablePoints(0);
     }
 
     public void GameOver(int points)
