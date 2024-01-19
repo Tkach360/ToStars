@@ -6,6 +6,10 @@ TagManager:
   tags:
   - button
   - Icon
+  - Enemy
+  - Vertical
+  - Hero
+  - Bonus
   layers:
   - Default
   - TransparentFX
@@ -13,10 +17,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Hero
+  - Solid
+  - Enemy
+  - Interface
   - 
   - 
   - 
@@ -45,6 +49,9 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 1153729343
+    locked: 0
+  - name: Game
+    uniqueID: 2450758167
     locked: 0
   - name: UI
     uniqueID: 3014316217
