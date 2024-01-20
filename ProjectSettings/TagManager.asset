@@ -10,6 +10,8 @@ TagManager:
   - Vertical
   - Hero
   - Bonus
+  - Bullet
+  - Isometric
   layers:
   - Default
   - TransparentFX
