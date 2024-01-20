@@ -238,7 +238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 860393533151027240, guid: 20bffc3d228b9694fa934c223e036cfa, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 860393533151027240, guid: 20bffc3d228b9694fa934c223e036cfa, type: 3}
       propertyPath: m_LocalScale.x
@@ -1245,7 +1245,7 @@ RectTransform:
   - {fileID: 784077442}
   - {fileID: 81788955}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1339,7 +1339,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &441567100
 GameObject:
@@ -2028,7 +2028,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &784077442
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2234,7 +2234,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4406060054321785569, guid: 090dbdc53ffe3254f82859fdf29cfa5f, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7687901148700161235, guid: 090dbdc53ffe3254f82859fdf29cfa5f, type: 3}
       propertyPath: m_Name
@@ -2677,7 +2677,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2168683033079495193, guid: 4013430f213f85a479b4a103f785fe46, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2168683033079495193, guid: 4013430f213f85a479b4a103f785fe46, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2685,7 +2685,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2168683033079495193, guid: 4013430f213f85a479b4a103f785fe46, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.38
+      value: -0.17
       objectReference: {fileID: 0}
     - target: {fileID: 2168683033079495193, guid: 4013430f213f85a479b4a103f785fe46, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2741,7 +2741,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4957074822163269259, guid: 4013430f213f85a479b4a103f785fe46, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2825,30 +2825,30 @@ MonoBehaviour:
   OnGetSlowedBonus:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: ed62b18d2e97b3745b51b3e87591c634, type: 3}
-        m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 1443320513}
+        m_TargetAssemblyTypeName: BonusTimer, Assembly-CSharp
+        m_MethodName: AddTime
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0
+          m_FloatArgument: 10
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
   OnGetX2Bonus:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 87571f00c5395d34aacb4c210c10bc5c, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
+      - m_Target: {fileID: 441567107}
+        m_TargetAssemblyTypeName: BonusTimer, Assembly-CSharp
+        m_MethodName: AddTime
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0
+          m_FloatArgument: 10
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -3072,7 +3072,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 139181642084623509, guid: ebbd62ea4713ec64e90262a83d8c012e, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 139181642084623509, guid: ebbd62ea4713ec64e90262a83d8c012e, type: 3}
       propertyPath: m_LocalScale.x
@@ -6422,11 +6422,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3011450074192208125, guid: db32811da72e5ba4f8d561e6e179b51d, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3011450074192208125, guid: db32811da72e5ba4f8d561e6e179b51d, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4839932444341816149, guid: db32811da72e5ba4f8d561e6e179b51d, type: 3}
       propertyPath: Action.m_PersistentCalls.m_Calls.Array.size
