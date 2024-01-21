@@ -8,12 +8,19 @@ abstract public class BonusTimer : MonoBehaviour
     protected TextMeshProUGUI _table;
     protected string _name;
 
+    private void OnEnable()
+    {
+        GameController.DisableGame += EndBonus;
+    }
+    private void OnDisable()
+    {
+        GameController.DisableGame -= EndBonus;
+    }
     protected void Awake()
     {
         _table = gameObject.GetComponent<TextMeshProUGUI>();
         _name = _table.text;
     }
-
     protected void Update()
     {
         if (_time > 0f)
@@ -28,7 +35,6 @@ abstract public class BonusTimer : MonoBehaviour
         }
         else
         {
-            gameObject.SetActive(false);
             EndBonus();
         }
     }

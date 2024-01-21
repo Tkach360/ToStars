@@ -9,10 +9,9 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject _gameOverMenu;
     [SerializeField] private TableController _recordTable;
     [SerializeField] private TableController _pointsTable;
-    [SerializeField] private GameObject _player;
-    [SerializeField] private GameObject _spawner;
+    [SerializeField] private GameObject _game;
 
-
+    public static event UnityAction DisableGame;
     private GameMode _nowGameMode; // текущий режим игры
 
     public static UnityAction OnStartGame; // при старте игры
@@ -39,7 +38,6 @@ public class GameController : MonoBehaviour
     {
         Player.OnHealthOver -= GameOver;
     }
-
     public void Exit()
     {
         Application.Quit();
@@ -65,8 +63,7 @@ public class GameController : MonoBehaviour
 
         _playInterface.SetActive(true);
         _menuButtons.SetActive(false);
-        _player.SetActive(true);
-        _spawner.SetActive(true);
+        _game.SetActive(true);
         OnStartGame?.Invoke();
         _pointsTable.SetTablePoints(0);
     }
@@ -78,7 +75,6 @@ public class GameController : MonoBehaviour
             PlayerPrefs.SetInt(recordName, points);
 
         //тут может быть анимация и прочая логика GameOver
-
         SetPause(true);
         _gameOverMenu.SetActive(true);
     }
@@ -97,14 +93,13 @@ public class GameController : MonoBehaviour
 
     public void ClearScene()
     {
+        DisableGame?.Invoke();
         DelGameObjectOfTag("Enemy");
         DelGameObjectOfTag("Bullet");
-        DelGameObjectOfTag("Bonus");
         DelGameObjectOfTag("Isometric");
         DelGameObjectOfTag("Vertical");
-
-        _spawner.SetActive(false);
-        _player.SetActive(false);
+        DelGameObjectOfTag("Bonus");
+        _game.SetActive(false);
     }
 
     private void DelGameObjectOfTag(string tag)

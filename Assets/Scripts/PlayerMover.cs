@@ -7,11 +7,15 @@ public class PlayerMover : MonoBehaviour
 {
     [SerializeField] private float _tapForce;
     [SerializeField] private float _speed;
+    private float _speedInSlow;
+    private float _speedOutSlow;
     private Rigidbody2D _rigidbody2D;
 
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _speedInSlow = _speed / 2f;
+        _speedOutSlow = _speed;
     }
 
     private void Update()
@@ -25,8 +29,9 @@ public class PlayerMover : MonoBehaviour
             _rigidbody2D.velocity = new Vector2(_speed, -_tapForce);
         }
     }
-    public void ChangeSpeed(float times)
+    public void ChangeSpeed(bool mode)
     {
-        _speed = _speed / times;
+        if (mode) _speed = _speedInSlow;
+        else _speed = _speedOutSlow;
     }
 }

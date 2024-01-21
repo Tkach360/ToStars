@@ -75,7 +75,7 @@ public class CanvasConntroller : MonoBehaviour
             buttons[i].SetStyleColors(style.styleColor, style.hoverColor);
         }
 
-        // учтанавлияем цвет всех текстов
+        // устанавлияем цвет всех текстов
         TextMeshProUGUI[] texts = FindObjectsOfType<TextMeshProUGUI>(true);
 
         for (int i = 0; i < texts.Length; i++)

@@ -12,6 +12,8 @@ TagManager:
   - Bonus
   - Bullet
   - Isometric
+  - BonusTimer
+  - Interface
   layers:
   - Default
   - TransparentFX
