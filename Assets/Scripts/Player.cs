@@ -51,7 +51,6 @@ public class Player : MonoBehaviour
         }
     }
 
-
     public void TakeDamage(int value)
     {
         _health -= value;
@@ -72,11 +71,11 @@ public class Player : MonoBehaviour
 
     public void AddSlowedBonus(float time) // при получении бонуса замедления
     {
-        GetComponent<PlayerMover>().ChangeSpeed(2); 
+        GetComponent<PlayerMover>().ChangeSpeed(true); 
         OnGetSlowedBonus?.Invoke(time);
     }
 
-    private void RemoveSlowedBonus() => GetComponent<PlayerMover>().ChangeSpeed(0.5f);
+    public void RemoveSlowedBonus() => GetComponent<PlayerMover>().ChangeSpeed(false);
 
     public void AddX2Bonus(float time)
     {
@@ -84,7 +83,7 @@ public class Player : MonoBehaviour
         OnGetX2Bonus?.Invoke(time);
     }
 
-    private void RemovePointsBonus() => _pointsAtTime = 1;
+    public void RemovePointsBonus() => _pointsAtTime = 1;
 
     public void AddHPBonus()
     {
