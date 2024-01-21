@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private TableController _recordTable;
     [SerializeField] private TableController _pointsTable;
     [SerializeField] private GameObject _game;
+    [SerializeField] private GameObject _pauseButton;
 
     public static event UnityAction DisableGame;
     private GameMode _nowGameMode; // текущий режим игры
@@ -77,6 +78,7 @@ public class GameController : MonoBehaviour
         //тут может быть анимация и прочая логика GameOver
         SetPause(true);
         _gameOverMenu.SetActive(true);
+        _pauseButton.SetActive(false);
     }
 
     public void SetPause(bool mode) // установка паузы
