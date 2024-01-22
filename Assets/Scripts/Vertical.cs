@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Vertical : MonoBehaviour
 {
-    public int speed;
+    [SerializeField] private int speed;
     void Update()
     {
         transform.Translate(Vector2.up * speed * Time.deltaTime);

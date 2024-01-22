@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class WaitAndStart : MonoBehaviour
 {
-    public Behaviour script;
-    Camera cam;
+    [SerializeField] private Behaviour script;
+    [SerializeField] private Camera cam;
 
     void Start()
     {

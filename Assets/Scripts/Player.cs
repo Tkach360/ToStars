@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] public int maxHealth;
+    [SerializeField] private int maxHealth;
     [SerializeField] private float _timePointsDelay = 1f;
     [SerializeField] private int _pointsAtTime = 1;
     private int _health;

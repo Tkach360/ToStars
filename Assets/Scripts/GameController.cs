@@ -46,25 +46,26 @@ public class GameController : MonoBehaviour
 
     public void RunEasyMode()
     {
-        RunGame();
+        RunGame(2.5f, 3);
         _nowGameMode = new GameMode("EasyMode");
         _recordTable.SetTablePoints(PlayerPrefs.GetInt(_nowGameMode.recordName));
     }
 
     public void RunHardMode()
     {
-        RunGame();
+        RunGame(3.5f, 5);
         _nowGameMode = new GameMode("HardMode");
         _recordTable.SetTablePoints(PlayerPrefs.GetInt(_nowGameMode.recordName));
     }
 
-    private void RunGame()
+    private void RunGame(float speed, int numberOfObstacles)
     {
         // тут всё, что происходит при начале игры вне зависимости от режима
 
         _playInterface.SetActive(true);
         _menuButtons.SetActive(false);
         _game.SetActive(true);
+        _game.GetComponent<Game>().SetSettings(speed, numberOfObstacles);
         OnStartGame?.Invoke();
         _pointsTable.SetTablePoints(0);
     }
@@ -101,6 +102,7 @@ public class GameController : MonoBehaviour
         DelGameObjectOfTag("Isometric");
         DelGameObjectOfTag("Vertical");
         DelGameObjectOfTag("Bonus");
+        _pauseButton.SetActive(true);
         _game.SetActive(false);
     }
 

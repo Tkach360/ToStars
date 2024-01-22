@@ -1,17 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class SpawnEnemy : MonoBehaviour
 {
-    public float maxTime = 1;
+    [SerializeField] private float maxTime = 1;
     private float timer = 0;
-    public GameObject[] objects;
-    public GameObject player;
-    public GameObject wallUp;
-    public GameObject wallDown;
-    public int numberOfObstacles;
+    [SerializeField] private GameObject[] objects;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject wallUp;
+    [SerializeField] private GameObject wallDown;
+    [SerializeField] private int numberOfObstacles;
     private Vector2 spawnArea;
 
     void Start()
@@ -31,6 +30,10 @@ public class SpawnEnemy : MonoBehaviour
         timer += Time.deltaTime;
     }
     
+    public void SetNumberOfObstacles(int number)
+    {
+        numberOfObstacles = number;
+    }
 
     private void SpawnObstacles()
     {
