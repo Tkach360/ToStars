@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class Gun : MonoBehaviour
 {
-    public GameObject bullet;
-    public Transform shotPoint;
+    [SerializeField] protected GameObject bullet;
+    [SerializeField] protected Transform shotPoint;
     protected float timeBtwShots;
-    public float startTimeBtwShots;
+    [SerializeField] protected float startTimeBtwShots;
 }

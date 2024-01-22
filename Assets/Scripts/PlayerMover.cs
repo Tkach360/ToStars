@@ -34,4 +34,8 @@ public class PlayerMover : MonoBehaviour
         if (mode) _speed = _speedInSlow;
         else _speed = _speedOutSlow;
     }
+    public void SetSpeed(float speed)
+    {
+        _speed = speed;
+    }
 }

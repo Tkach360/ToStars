@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class Bullet : MonoBehaviour
 {
-    public float speed;
-    public float lifetime;
-    public float distance;
-    public LayerMask whatIsSolid;
+    [SerializeField] protected float speed;
+    [SerializeField] protected float lifetime;
+    [SerializeField] protected float distance;
+    [SerializeField] protected LayerMask whatIsSolid;
 }

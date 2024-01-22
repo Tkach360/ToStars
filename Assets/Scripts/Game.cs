@@ -19,6 +19,10 @@ public class Game : MonoBehaviour
         _spawnManager.SetActive(false);
         _player.SetActive(false);
     }
-
+    public void SetSettings(float speed, int numberOfObstacles)
+    {
+        _player.GetComponent<PlayerMover>().SetSpeed(speed);
+        _spawnManager.GetComponent<SpawnEnemy>().SetNumberOfObstacles(numberOfObstacles);
+    }
 
 }

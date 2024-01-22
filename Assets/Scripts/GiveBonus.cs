@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GiveBonus : MonoBehaviour
 {
-    public GameObject[] bonuses;
+    [SerializeField] private GameObject[] bonuses;
     public void MakeBonus(Transform parent_transform)
     {
         System.Random rnd = new System.Random();
